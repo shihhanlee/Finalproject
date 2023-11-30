@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales and Profit Overview</title>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawCharts);
+
+        function drawCharts() {
+            drawSalesChart();
+            drawProfitChart();
+        }
+
+        function drawSalesChart() {
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Segment');
+            data.addColumn('number', 'Sales');
+            data.addRows([
+                ['Consumer', 51],
+                ['Corporate', 31],
+                ['Home Office', 19],
+            ]);
+
+            var options = {
+                title: 'Sales by Segment',
+                width: 400,
+                height: 300,
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('salesChart'));
+            chart.draw(data, options);
+        }
+
+        function drawProfitChart() {
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Segment');
+            data.addColumn('number', 'Profit');
+            data.addRows([
+                ['Consumer', 47],
+                ['Corporate', 32],
+                ['Home Office', 21],
+            ]);
+
+            var options = {
+                title: 'Profit by Segment',
+                width: 400,
+                height: 300,
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('profitChart'));
+            chart.draw(data, options);
+        }
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f2f2f2;
+        }
+
+        .chart-container {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 20px;
+        }
+
+        .chart {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 style="text-align: center;">Sales and Profit Overview</h1>
+    <div class="chart-container">
+        <div id="salesChart" class="chart"></div>
+        <div id="profitChart" class="chart"></div>
+    </div>
+</body>
+</html>
