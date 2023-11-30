@@ -1,0 +1,62 @@
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+
+      google.charts.load('current', {'packages':['corechart']});
+
+      
+      google.charts.setOnLoadCallback(SalesChart);
+      google.charts.setOnLoadCallback(SegmentChart);
+
+      function SalesChart() {
+
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Segment');
+        data.addColumn('number', 'Sales');
+        data.addRows([
+          ['Consumer', 51],
+          ['Corporate', 31],
+          ['Home Office', 19],        
+        ]);
+
+        var options = {'title':'Sales by Segment',
+                       'width':400,
+                       'height':300};
+
+        var chart = new google.visualization.PieChart(document.getElementById('SalesChart_div'));
+        chart.draw(data, options);
+      }
+
+      function SegmentChart() {
+
+        // Create the data table for Anthony's pizza.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Segment');
+        data.addColumn('number', 'Profit');
+        data.addRows([
+          ['Consumer', 47],
+          ['Corporate', 32],
+          ['Home Office', 21],
+        ]);
+
+        var options = {title:'Profit by Segment',
+                       width:400,
+                       height:300};
+
+        var chart = new google.visualization.PieChart(document.getElementById('SegmentChart_div'));
+        chart.draw(data, options);
+      }
+
+    </script>
+  </head>
+
+  <body>    
+    <table class="columns">
+      <tr>
+        <td><div id="SalesChart_div" style="border: 1px solid #ccc"></div></td>
+        <td><div id="SegmentChart_div" style="border: 1px solid #ccc"></div></td>
+      </tr>
+    </table>
+  </body>
+</html>
